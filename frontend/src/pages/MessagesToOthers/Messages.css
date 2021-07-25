@@ -1,0 +1,35 @@
+.chatTextandBut {
+  display: flex;
+  gap: 0.2rem;
+  width: 66%;
+  bottom: 0;
+  position: fixed;
+}
+.chatTextandButWrap {
+  background-color: red;
+}
+
+.chatInput {
+  width: 100%;
+  padding: 12px;
+  border-radius: 1rem;
+  font-size: inherit;
+  outline: none;
+  border-width: 0px;
+  background-color: rgb(221, 217, 217);
+}
+
+.sendIcon {
+  margin: auto;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 600px) {
+  .chatTextandBut {
+    display: flex;
+    gap: 0.5rem;
+    width: 82%;
+    bottom: 0;
+    position: fixed;
+  }
+}

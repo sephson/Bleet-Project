@@ -1,0 +1,27 @@
+.nav-links {
+  color: #08306b;
+  font-size: 1.3rem;
+  font-weight: 700;
+  list-style: none;
+  margin: 2.5rem 0;
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+}
+
+.Material-icon {
+  margin-bottom: -0.4rem;
+}
+
+.left-menu {
+  overflow: hidden;
+  position: fixed;
+}
+
+@media screen and (max-width: 600px) {
+  .left-component {
+    display: none;
+  }
+}

@@ -1,0 +1,26 @@
+.conversation {
+  margin-top: 1rem;
+}
+
+.conversation:hover {
+  background-color: rgb(221, 217, 217);
+}
+
+.conversationName {
+  color: rgb(77, 77, 77);
+}
+
+.horizontal-line {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.conversationImg {
+  border-radius: 50%;
+  width: 3rem;
+}
+
+.convoWrap {
+  padding: 0.5rem;
+  color: rgb(77, 77, 77);
+}

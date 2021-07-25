@@ -1,0 +1,193 @@
+.navbarItems {
+  height: 4rem;
+  background-color: #08519c;
+  padding: 1rem 4rem 1rem 4rem;
+  display: grid;
+  overflow: hidden;
+  position: fixed;
+  grid-template-columns: repeat(2, auto);
+  width: 100%;
+  top: 0;
+}
+
+.left-side-nav {
+  justify-self: start;
+}
+
+.navbarLogo {
+  color: #f7fbff;
+}
+
+.right-side-nav {
+  justify-self: end;
+}
+
+.userProfilePicture {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.hamburger-menu {
+  width: 27px;
+  height: 30px;
+  display: none;
+  /* position: fixed; */
+  top: 50px;
+  right: 50px;
+  cursor: pointer;
+
+  flex-direction: column;
+  justify-content: space-around;
+  margin-left: 2rem;
+}
+
+.line {
+  width: 100%;
+  height: 4px;
+  background-color: #fff;
+  transition: all 0.5s;
+  border-radius: 1.5px;
+}
+
+.change.line-1 {
+  transform: rotateZ(-405deg) translate(-8px, 6px);
+}
+
+.change.line-2 {
+  opacity: 0;
+}
+
+.change.line-3 {
+  transform: rotateZ(405deg) translate(-8px, -6px);
+}
+
+@media screen and (max-width: 960px) {
+  .navbarItems {
+    height: 4rem;
+    background-color: #08519c;
+    padding: 1rem 3rem 1rem 3rem;
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+  }
+}
+
+.nav-menu {
+  display: none;
+}
+
+@media screen and (max-width: 600px) {
+  .navbarItems {
+    height: 4rem;
+    background-color: #08519c;
+    padding: 1rem 3rem 1rem 3rem;
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+  }
+
+  .hamburger-menu {
+    width: 27px;
+    height: 30px;
+    justify-self: end;
+    /* position: fixed; */
+    top: 50px;
+    right: 50px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-left: 2rem;
+  }
+
+  .right-side-nav {
+    justify-self: center;
+  }
+
+  .nav-menu {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 32rem;
+    position: absolute;
+    top: 4rem;
+    left: -100%;
+    opacity: 1;
+    transition: all 0.5s ease;
+  }
+  .nav-menu.active {
+    background: #08519c;
+    left: 0;
+    opacity: 1;
+    transition: all 0.5s ease;
+    z-index: 1;
+    overflow: hidden;
+    height: -webkit-fill-available;
+    position: fixed;
+  }
+
+  .nav-links {
+    color: #f7fbff;
+    font-size: 1.3rem;
+    font-weight: 700;
+    list-style: none;
+    text-align: center;
+    margin: 1rem 0 1rem;
+  }
+
+  .Material-icon {
+    margin-bottom: -0.4rem;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .navbarItems {
+    height: 4rem;
+    background-color: #08519c;
+    padding: 1rem 2rem 1rem 2rem;
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+  }
+  .hamburger-menu {
+    width: 27px;
+    height: 30px;
+    justify-self: end;
+    /* position: fixed; */
+    top: 50px;
+    right: 50px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-left: 2rem;
+  }
+
+  .right-side-nav {
+    justify-self: center;
+  }
+
+  .nav-menu {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 32rem;
+    position: absolute;
+    top: 4rem;
+    left: -100%;
+    opacity: 1;
+    transition: all 0.5s ease;
+  }
+  .nav-menu.active {
+    background: #08519c;
+    left: 0;
+    opacity: 1;
+    transition: all 0.5s ease;
+    z-index: 1;
+    position: fixed;
+  }
+  .Material-icon {
+    margin-right: 1rem;
+    margin-bottom: -0.4rem;
+  }
+}

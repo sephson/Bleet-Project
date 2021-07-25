@@ -1,0 +1,71 @@
+.post-container {
+  margin-top: 2rem;
+}
+
+.home-container {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+}
+
+.comment-section {
+  width: 100%;
+
+  border-radius: 10px;
+  box-shadow: 0px 0px 16px -8px rgb(0 0 0 / 68%);
+  margin-top: 2rem;
+}
+.comment-form {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.commentButton {
+  border: none;
+  padding: 7px;
+  border-radius: 5px;
+  background-color: #08519c;
+  font-weight: 500;
+  margin-right: 20px;
+  cursor: pointer;
+  color: white;
+  font-size: 1rem;
+}
+
+.comment-itself {
+  margin-top: 2rem;
+}
+
+.postcomment {
+  font-size: 1rem;
+  color: rgb(77, 77, 77);
+  margin-bottom: 1rem;
+}
+
+.shareProfileImg {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.shareInput {
+  margin-bottom: 1rem;
+}
+
+@media screen and (max-width: 600px) {
+  .home-container {
+    display: grid;
+    padding: 2.5rem 3rem 2.5rem 3rem;
+    grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .home-container {
+    display: grid;
+    padding: 2.5rem 2rem 2.5rem 2rem;
+    grid-template-columns: 1fr;
+  }
+}

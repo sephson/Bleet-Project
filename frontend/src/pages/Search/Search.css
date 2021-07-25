@@ -1,0 +1,30 @@
+.search-middle-wrap {
+  text-align: center;
+}
+
+.search-input {
+  margin-right: 1rem;
+  padding: 0.5rem;
+  font-size: inherit;
+  border-radius: 0.7rem;
+  border: none;
+  outline: none;
+}
+
+.search-res {
+  text-align: left;
+  color: rgb(77, 77, 77);
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+}
+
+.follow-un {
+  display: flex;
+  gap: 1rem;
+  font-weight: bold;
+}
+
+.search-res:hover {
+  background-color: #c2c2c2;
+}

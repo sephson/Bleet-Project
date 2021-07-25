@@ -1,0 +1,59 @@
+.post-container {
+  box-shadow: 0px 0px 16px -8px rgb(0 0 0 / 68%);
+  padding: 1rem;
+}
+.mainWrap {
+  display: grid;
+  grid-gap: 1.3rem;
+  /* gap: 1.3rem; */
+  margin-bottom: 1rem;
+  grid-template-columns: 1fr 22fr 1fr;
+}
+
+.postUser {
+  font-size: 1.5rem;
+  color: rgb(77, 77, 77);
+}
+
+.postTime {
+  color: rgb(77, 77, 77);
+}
+
+.postImg {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.postContent {
+  text-align: justify;
+  font-size: 1.2rem;
+  line-height: 1.7rem;
+  color: rgb(77, 77, 77);
+}
+
+.postInteractions {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  margin-top: 1rem;
+}
+
+.comments {
+  justify-self: start;
+  color: #08306b;
+}
+
+.like {
+  justify-self: end;
+  color: rgb(182, 0, 0);
+}
+
+.react-icon {
+  margin: auto;
+}
+
+.delete-pop {
+  text-align: center;
+}
