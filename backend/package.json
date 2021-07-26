@@ -2,6 +2,10 @@
   "name": "backend",
   "version": "1.0.0",
   "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "heroku-postbuild": "YARN_CONFIG_PRODUCTION=false yarn add --prefix ../frontend && yarn run build --prefix ../frontend"
+  },
   "license": "MIT",
   "dependencies": {
     "bcrypt": "^5.0.1",

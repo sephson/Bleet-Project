@@ -10,7 +10,7 @@ const myConversationRoute = require("./Routes/MyConversationRoute");
 const morgan = require("morgan");
 const dotenv = require("dotenv");
 const app = express();
-dotenv.config();
+dotenv.config({ path: "./config.env" });
 
 const io = require("socket.io")(8900, {
   cors: {
@@ -19,7 +19,7 @@ const io = require("socket.io")(8900, {
 });
 
 mongoose.connect(
-  process.env.MONGO_URL,
+  process.env.MONGO_URI,
   {
     useCreateIndex: true,
     useNewUrlParser: true,
@@ -33,6 +33,18 @@ mongoose.connect(
 app.use(express.json());
 app.use(helmet());
 app.use(morgan("common"));
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "/frontend/build")));
+
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "../frontend", "build", "index.html"));
+  });
+} else {
+  app.get("/", (req, res) => {
+    res.send("api running");
+  });
+}
 
 let users = [];
 
