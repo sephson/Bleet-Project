@@ -34,18 +34,6 @@ app.use(express.json());
 app.use(helmet());
 app.use(morgan("common"));
 
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "/frontend/build")));
-
-  app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "../frontend", "build", "index.html"));
-  });
-} else {
-  app.get("/", (req, res) => {
-    res.send("api running");
-  });
-}
-
 let users = [];
 
 const addUser = (userId, socketId) => {
@@ -66,6 +54,18 @@ app.use("/api/user", userRoute);
 app.use("/api/post", postRoute);
 app.use("/api/chat", chatRoute);
 app.use("/api/conversation", myConversationRoute);
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "../frontend/build")));
+
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "../frontend", "build", "index.html"));
+  });
+} else {
+  app.get("/", (req, res) => {
+    res.send("api running");
+  });
+}
 
 io.on("connection", (socket) => {
   console.log("A User Connected");
