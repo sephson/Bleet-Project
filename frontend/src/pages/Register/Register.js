@@ -38,7 +38,7 @@ const Register = () => {
 
   return (
     <div>
-      <div className="Register">
+      <div className="login">
         <div className="loginWrapper">
           <div className="loginLeft">
             <h3 className="loginLogo">Bleet</h3>

@@ -42,11 +42,11 @@ const Search = () => {
             <>
               {allUsers
                 .filter((value) => {
-                  return (
-                    input === "" &&
-                    value(value.username.includes(input)) &&
-                    value
-                  );
+                  return input === ""
+                    ? value
+                    : value.username.includes(input)
+                    ? value
+                    : "";
                 })
                 .map((all) => {
                   return <SearchUser allUsers={all} />;

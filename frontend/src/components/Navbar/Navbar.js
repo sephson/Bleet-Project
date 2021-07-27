@@ -7,10 +7,11 @@ import SearchIcon from "@material-ui/icons/Search";
 import { Link, useHistory } from "react-router-dom";
 import { AppContext } from "../../context/AppContext";
 import ExitToAppOutlinedIcon from "@material-ui/icons/ExitToAppOutlined";
+import picture from "../../images/a.png";
 
 const Navbar = () => {
   const { user } = useContext(AppContext);
-  const pf = process.env.REACT_APP_PUBLIC_FOLDER;
+
   const [click, setClick] = useState(false);
   const handleClick = () => {
     setClick(!click);
@@ -42,15 +43,7 @@ const Navbar = () => {
         </div>
 
         <div className="right-side-nav">
-          <img
-            src={
-              user.profilePicture
-                ? pf + user.profilePicture
-                : pf + "person/a.png"
-            }
-            className="userProfilePicture"
-            alt="profilepic"
-          />
+          <img src={picture} className="userProfilePicture" alt="profilepic" />
         </div>
 
         <div className="hamburger-menu">

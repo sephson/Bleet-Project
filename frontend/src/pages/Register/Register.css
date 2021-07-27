@@ -1,5 +1,5 @@
 .login {
-  width: 100vw;
+  /* width: 100vw; */
   height: 100vh;
   background-color: #f0f2f5;
   display: flex;
@@ -8,7 +8,7 @@
 }
 
 .loginWrapper {
-  width: 70%;
+  /* width: 70%; */
   height: 70%;
   display: flex;
 }
@@ -81,4 +81,20 @@
   font-size: 20px;
   font-weight: 500;
   cursor: pointer;
+}
+
+@media screen and (max-width: 650px) {
+  .login {
+    background-color: #f0f2f5;
+    align-items: center;
+    justify-content: center;
+    height: 0;
+  }
+  .loginWrapper {
+    padding: 0 1rem 0 1rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    background-color: #f0f2f5;
+  }
 }
