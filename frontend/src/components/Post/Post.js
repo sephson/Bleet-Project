@@ -8,7 +8,7 @@ import "./Post.css";
 import { AppContext } from "../../context/AppContext";
 import { GoKebabVertical } from "react-icons/go";
 import PopUp from "../PopUp/PopUp";
-import picture from "../images/bleet.jpg";
+import picture from "../images/bleet.png";
 
 const Post = ({ post }) => {
   const [like, setLike] = useState(post.likes.length);

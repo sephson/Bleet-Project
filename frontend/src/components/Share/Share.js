@@ -1,11 +1,10 @@
 import React, { useRef } from "react";
 import "./Share.css";
 import axios from "axios";
-import picture from "../images/bleet.jpg";
+import picture from "../images/bleet.png";
 
 const Share = ({ user }) => {
   const content = useRef();
- 
 
   const submitHandler = async () => {
     try {

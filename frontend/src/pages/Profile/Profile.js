@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext, useRef } from "react";
 import Leftbar from "../../components/Leftbar/Leftbar";
 import Navbar from "../../components/Navbar/Navbar";
 import date from "date-and-time";
-import picture from "../../components/images/bleet.jpg";
+import picture from "../../components/images/bleet.png";
 import Center from "../../components/Center/Center";
 import PopUp from "../../components/PopUp/PopUp";
 import "./Profile.css";

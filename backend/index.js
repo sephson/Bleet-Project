@@ -9,10 +9,14 @@ const chatRoute = require("./Routes/ChatRoute");
 const myConversationRoute = require("./Routes/MyConversationRoute");
 const morgan = require("morgan");
 const dotenv = require("dotenv");
-// const http = require("http");
-const app = express();
-const io = require("socket.io")();
 const cors = require("cors");
+const app = express();
+const io = require("socket.io")({
+  cors: {
+    origin: "https://vibrant-murdock-08426b.netlify.app/",
+  },
+});
+
 dotenv.config({ path: "./config.env" });
 mongoose.connect(
   process.env.MONGO_URI,
@@ -50,18 +54,6 @@ app.use("/api/user", userRoute);
 app.use("/api/post", postRoute);
 app.use("/api/chat", chatRoute);
 app.use("/api/conversation", myConversationRoute);
-
-// if (process.env.NODE_ENV === "production") {
-//   app.use(express.static("frontend/build"));
-
-//   // app.get("*", (req, res) => {
-//   //   res.sendFile(path.join(__dirname, "/frontend", "build", "index.html"));
-//   // });
-// } else {
-//   app.get("/", (req, res) => {
-//     res.send("api running");
-//   });
-// }
 
 io.on("connection", (socket) => {
   console.log("A User Connected");

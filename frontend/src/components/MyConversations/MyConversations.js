@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 // import TopbarChat from "../../components/TopbarChat/TopbarChat";
-import picture from "../images/bleet.jpg";
+import picture from "../images/bleet.png";
 const MyConversations = ({ conversation, currentUser }) => {
   //to get friend data
   const [user, setUser] = useState({});

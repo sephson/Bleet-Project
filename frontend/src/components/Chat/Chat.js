@@ -2,7 +2,7 @@ import "./Chat.css";
 import React from "react";
 import { format } from "timeago.js";
 import { Link } from "react-router-dom";
-import picture from "../images/bleet.jpg";
+import picture from "../images/bleet.png";
 const Chat = ({ myMessage, message, receiver }) => {
   return (
     <div>

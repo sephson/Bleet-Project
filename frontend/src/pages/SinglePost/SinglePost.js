@@ -9,7 +9,7 @@ import { AppContext } from "../../context/AppContext";
 import { format } from "timeago.js";
 import "./SinglePost.css";
 import { Link } from "react-router-dom";
-import picture from "../../components/images/bleet.jpg";
+import picture from "../../components/images/bleet.png";
 
 const SinglePost = () => {
   const { user: currentUser } = useContext(AppContext);
