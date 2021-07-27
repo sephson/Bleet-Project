@@ -1,1 +1,2 @@
 /api/* https://bleet-project.herokuapp.com/api/:splat 200
+/login /
