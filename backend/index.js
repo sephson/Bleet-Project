@@ -12,7 +12,7 @@ const dotenv = require("dotenv");
 const app = express();
 dotenv.config({ path: "./config.env" });
 
-const io = require("socket.io")(process.env.SOCKETPORT, {
+const io = require("socket.io")(process.env.PORT, {
   cors: {
     origin: "https://bleet-project.herokuapp.com/",
   },
