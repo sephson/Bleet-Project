@@ -7,7 +7,7 @@ import SearchIcon from "@material-ui/icons/Search";
 import { Link, useHistory } from "react-router-dom";
 import { AppContext } from "../../context/AppContext";
 import ExitToAppOutlinedIcon from "@material-ui/icons/ExitToAppOutlined";
-import picture from "../../images/a.png";
+import picture from "../../images/bleet.png";
 
 const Navbar = () => {
   const { user } = useContext(AppContext);
