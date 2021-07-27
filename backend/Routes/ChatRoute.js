@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const Chat = require("../models/ChatModel");
+const Chat = require("../Models/ChatModel");
 
 //add message
 
