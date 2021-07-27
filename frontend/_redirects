@@ -1,1 +1,1 @@
-/https://vibrant-murdock-08426b.netlify.app /https://bleet-project.herokuapp.com/
+/api/* https://bleet-project.herokuapp.com/api/:splat 200
