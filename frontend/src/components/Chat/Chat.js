@@ -1,11 +1,9 @@
 import "./Chat.css";
-import React, { useContext } from "react";
-import { AppContext } from "../../context/AppContext";
+import React from "react";
 import { format } from "timeago.js";
 import { Link } from "react-router-dom";
 import picture from "../images/bleet.jpg";
 const Chat = ({ myMessage, message, receiver }) => {
-
   return (
     <div>
       <div className={myMessage ? "message own" : "message"}>
