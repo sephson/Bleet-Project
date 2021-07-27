@@ -4,9 +4,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "cd frontend && yarn run build",
-    "start": "node index.js",
-    "frontend": "cd frontend && yarn start"
+    "start": "node index.js"
   },
   "license": "MIT",
   "dependencies": {
