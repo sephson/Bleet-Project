@@ -9,7 +9,6 @@
     "heroku-postbuild": "yarn run install-frontend && yarn run build",
     "start": "node index.js",
     "frontend": "cd frontend && yarn start"
-    
   },
   "license": "MIT",
   "dependencies": {
@@ -23,5 +22,8 @@
     "nodemon": "^2.0.12",
     "path": "^0.12.7",
     "socket.io": "^4.1.3"
+  },
+  "engines": {
+    "node": "14.15.1"
   }
 }

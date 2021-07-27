@@ -12,7 +12,7 @@ const dotenv = require("dotenv");
 const app = express();
 dotenv.config({ path: "./config.env" });
 
-const io = require("socket.io")(8900,{
+const io = require("socket.io")(process.env.SOCKETPORT, {
   cors: {
     origin: "http://localhost:3000",
   },
