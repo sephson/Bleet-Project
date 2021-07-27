@@ -15,7 +15,7 @@ const IM = () => {
   const [newMessage, setNewMessage] = useState([]);
   const [arrMessage, setArrMessage] = useState("");
   const { user } = useContext(AppContext);
-  const socket = useRef(io("ws://localhost:8900"));
+  const socket = useRef(io("https://bleet-project.herokuapp.com/"));
   const scrollRef = useRef();
   const [conversations, setConversations] = useState([]);
   const [receiver, setReceiver] = useState({});
