@@ -41,7 +41,7 @@ const IM = () => {
   }, [arrMessage, conversations]);
 
   useEffect(() => {
-    socket.current = io("ws://localhost:8900");
+    socket.current = io("https://bleet-project.herokuapp.com/");
     socket.current.on("getMessage", (data) => {
       setArrMessage({
         sender: data.senderId,

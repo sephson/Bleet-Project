@@ -14,7 +14,7 @@ dotenv.config({ path: "./config.env" });
 
 const io = require("socket.io")(process.env.SOCKETPORT, {
   cors: {
-    origin: "http://localhost:3000",
+    origin: "https://bleet-project.herokuapp.com/",
   },
 });
 
