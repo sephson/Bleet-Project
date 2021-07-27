@@ -12,7 +12,7 @@ const dotenv = require("dotenv");
 const app = express();
 dotenv.config({ path: "./config.env" });
 
-const io = require("socket.io")(8900, {
+const io = require("socket.io")({
   cors: {
     origin: "http://localhost:3000",
   },
@@ -58,9 +58,9 @@ app.use("/api/conversation", myConversationRoute);
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("frontend/build"));
 
-  app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "/frontend", "build", "index.html"));
-  });
+  // app.get("*", (req, res) => {
+  //   res.sendFile(path.join(__dirname, "/frontend", "build", "index.html"));
+  // });
 } else {
   app.get("/", (req, res) => {
     res.send("api running");
@@ -91,6 +91,6 @@ io.on("connection", (socket) => {
   });
 });
 
-app.listen(process.env.PORT || 5000, () => {
+app.listen(process.env.PORT, () => {
   console.log(`server running on port 5000`);
 });
