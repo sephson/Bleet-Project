@@ -8,6 +8,7 @@ import "./Post.css";
 import { AppContext } from "../../context/AppContext";
 import { GoKebabVertical } from "react-icons/go";
 import PopUp from "../PopUp/PopUp";
+import picture from "../images/bleet.jpg";
 
 const Post = ({ post }) => {
   const [like, setLike] = useState(post.likes.length);
@@ -62,15 +63,7 @@ const Post = ({ post }) => {
         <div classname="post-top">
           <main className="mainWrap">
             <Link to={`/profile/${user.username}`}>
-              <img
-                className="postImg"
-                src={
-                  user.profilePicture
-                    ? pf + user.profilePicture
-                    : pf + "person/a.png"
-                }
-                alt=""
-              />
+              <img className="postImg" src={picture} alt="" />
             </Link>
 
             <div className="userTimeWrap">

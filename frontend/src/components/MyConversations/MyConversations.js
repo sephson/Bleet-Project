@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 // import TopbarChat from "../../components/TopbarChat/TopbarChat";
-
+import picture from "../images/bleet.jpg";
 const MyConversations = ({ conversation, currentUser }) => {
   //to get friend data
   const [user, setUser] = useState({});
@@ -26,21 +26,13 @@ const MyConversations = ({ conversation, currentUser }) => {
   }, [currentUser, conversation]);
   console.log(conversation._id);
 
-  const pf = process.env.REACT_APP_PUBLIC_FOLDER;
+  // const pf = process.env.REACT_APP_PUBLIC_FOLDER;
 
   return (
     <div className="conversation">
       <Link to={`/direct-message/${conversation._id}`}>
         <div className="convoWrap">
-          <img
-            className="conversationImg"
-            src={
-              user.profilePicture
-                ? pf + user.profilePicture
-                : pf + "person/a.png"
-            }
-            alt=""
-          />
+          <img className="conversationImg" src={picture} alt="" />
           <h3 className="conversationName">{user.username}</h3>
           <p className="convoBio">{user.bio}</p>
           <hr className="horizontal-line" />

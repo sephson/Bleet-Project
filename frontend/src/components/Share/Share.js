@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import "./Share.css";
 import axios from "axios";
+import picture from "../images/bleet.jpg";
 
 const Share = ({ user }) => {
   const content = useRef();
@@ -19,15 +20,7 @@ const Share = ({ user }) => {
       <div className="shareWrapper">
         <form onSubmit={submitHandler}>
           <div className="shareTop">
-            <img
-              className="shareProfileImg"
-              src={
-                user.profilePicture
-                  ? pf + user.profilePicture
-                  : pf + "person/a.png"
-              }
-              alt=""
-            />
+            <img className="shareProfileImg" src={picture} alt="" />
             <textarea
               placeholder={`Hi ${user.username}! What are your thoughts?`}
               className="shareInput"

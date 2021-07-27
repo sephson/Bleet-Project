@@ -9,6 +9,7 @@ import { AppContext } from "../../context/AppContext";
 import { format } from "timeago.js";
 import "./SinglePost.css";
 import { Link } from "react-router-dom";
+import picture from "../../components/images/bleet.jpg";
 
 const SinglePost = () => {
   const { user: currentUser } = useContext(AppContext);
@@ -44,15 +45,7 @@ const SinglePost = () => {
         <div className="post-container">
           <main className="mainWrap">
             <Link to={`/profile/${user.username}`}>
-              <img
-                className="postImg"
-                src={
-                  user.profilePicture
-                    ? pf + user.profilePicture
-                    : pf + "person/a.png"
-                }
-                alt=""
-              />
+              <img className="postImg" src={picture} alt="" />
             </Link>
             <div className="userTimeWrap">
               <h3 className="postUser">{user.username}</h3>

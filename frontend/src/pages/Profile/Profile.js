@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext, useRef } from "react";
 import Leftbar from "../../components/Leftbar/Leftbar";
 import Navbar from "../../components/Navbar/Navbar";
 import date from "date-and-time";
-
+import picture from "../../components/images/bleet.jpg";
 import Center from "../../components/Center/Center";
 import PopUp from "../../components/PopUp/PopUp";
 import "./Profile.css";
@@ -95,15 +95,7 @@ const Profile = () => {
         <div>
           <div className="profile">
             <div className="msg-wrap">
-              <img
-                className="postImg"
-                src={
-                  user.profilePicture
-                    ? pf + user.profilePicture
-                    : pf + "person/a.png"
-                }
-                alt=""
-              />
+              <img className="postImg" src={picture} alt="" />
               {/* {console.log(username)} */}
               {currentUser.username === username || (
                 <DM currentId={currentUser} />
