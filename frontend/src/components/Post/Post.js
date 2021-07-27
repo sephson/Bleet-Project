@@ -15,7 +15,7 @@ const Post = ({ post }) => {
   const [isLiked, setIsLiked] = useState(false);
   const [user, setUser] = useState({});
   const { user: currentUser } = useContext(AppContext);
-  const pf = process.env.REACT_APP_PUBLIC_FOLDER;
+
   const [isOpen, setIsOpen] = useState(false);
 
   const togglePopUp = () => {

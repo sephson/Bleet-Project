@@ -13,7 +13,6 @@ import { Follow, Unfollow } from "../../context/AppActions";
 import DM from "../../components/DirectMessage/DM";
 
 const Profile = () => {
-  const pf = process.env.REACT_APP_PUBLIC_FOLDER;
   const { user: currentUser, dispatch } = useContext(AppContext);
   const [user, setUser] = useState({});
   const [followed, setFollowed] = useState(

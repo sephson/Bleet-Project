@@ -5,7 +5,6 @@ import { format } from "timeago.js";
 import { Link } from "react-router-dom";
 import picture from "../images/bleet.jpg";
 const Chat = ({ myMessage, message, receiver }) => {
-  const { user } = useContext(AppContext);
 
   return (
     <div>

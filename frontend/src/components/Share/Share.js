@@ -5,7 +5,7 @@ import picture from "../images/bleet.jpg";
 
 const Share = ({ user }) => {
   const content = useRef();
-  const pf = process.env.REACT_APP_PUBLIC_FOLDER;
+ 
 
   const submitHandler = async () => {
     try {
