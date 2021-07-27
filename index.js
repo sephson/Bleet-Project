@@ -56,10 +56,10 @@ app.use("/api/chat", chatRoute);
 app.use("/api/conversation", myConversationRoute);
 
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "../frontend/build")));
+  app.use(express.static("frontend/build"));
 
   app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "../frontend", "build", "index.html"));
+    res.sendFile(path.join(__dirname, "/frontend", "build", "index.html"));
   });
 } else {
   app.get("/", (req, res) => {
@@ -91,6 +91,6 @@ io.on("connection", (socket) => {
   });
 });
 
-app.listen(process.env.PORT, () => {
-  console.log(`server running on port ${process.env.PORT}`);
+app.listen(process.env.PORT || 5000, () => {
+  console.log(`server running on port 5000`);
 });

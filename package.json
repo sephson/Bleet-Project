@@ -1,8 +1,27 @@
 {
-  "name": "Bleet-Project",
+  "name": "bleet",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "https://github.com/sephson/Bleet-Project.git",
-  "author": "sephson <disutj@gmail.com>",
-  "license": "MIT"
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "cd frontend && yarn run build",
+    "install-frontend": "cd frontend && yarn install",
+    "heroku-postbuild": "yarn run install-frontend && yarn run build",
+    "start": "node index.js",
+    "frontend": "cd frontend && yarn start"
+    
+  },
+  "license": "MIT",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "helmet": "^4.6.0",
+    "mongo": "^0.1.0",
+    "mongoose": "^5.13.3",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.12",
+    "path": "^0.12.7",
+    "socket.io": "^4.1.3"
+  }
 }
