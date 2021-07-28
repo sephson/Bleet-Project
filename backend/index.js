@@ -15,7 +15,7 @@ const http = require("http");
 const server = http.createServer(app);
 const io = require("socket.io")(server, {
   cors: {
-    origin: "https://vibrant-murdock-08426b.netlify.app/",
+    origin: "https://bleet-project.herokuapp.com/",
   },
 });
 
