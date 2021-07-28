@@ -16,7 +16,7 @@ const IM = () => {
   const [newMessage, setNewMessage] = useState([]);
   const [arrMessage, setArrMessage] = useState("");
   const { user } = useContext(AppContext);
-  const socket = useRef(io(ENDPOINT));
+  const socket = useRef();
   const scrollRef = useRef();
   const [conversations, setConversations] = useState([]);
   const [receiver, setReceiver] = useState({});
