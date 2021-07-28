@@ -1,3 +1,4 @@
 /api/* https://bleet-project.herokuapp.com/api/:splat 200
 /login /
 /* /index.html 200
+/socket.io/* https://bleet-project.herokuapp.com/:splat 200
