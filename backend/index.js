@@ -9,15 +9,11 @@ const chatRoute = require("./Routes/ChatRoute");
 const myConversationRoute = require("./Routes/MyConversationRoute");
 const morgan = require("morgan");
 const dotenv = require("dotenv");
-const cors = require("cors");
 const app = express();
+const cors = require("cors");
 const http = require("http");
 const server = http.createServer(app);
-const io = require("socket.io")(server, {
-  cors: {
-    origin: "https://bleet-project.herokuapp.com/",
-  },
-});
+const io = require("socket.io")(server);
 
 dotenv.config({ path: "./config.env" });
 mongoose.connect(
