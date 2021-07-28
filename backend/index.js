@@ -10,10 +10,14 @@ const myConversationRoute = require("./Routes/MyConversationRoute");
 const morgan = require("morgan");
 const dotenv = require("dotenv");
 const app = express();
-const cors = require("cors");
 const http = require("http");
 const server = http.createServer(app);
-const io = require("socket.io")(server);
+const io = require("socket.io")(server, {
+  cors: {
+    origin: ["*"],
+    credentials: true,
+  },
+});
 
 dotenv.config({ path: "./config.env" });
 mongoose.connect(
@@ -27,19 +31,10 @@ mongoose.connect(
     console.log("database connected");
   }
 );
-app.use(cors());
+
 app.use(express.json());
 app.use(helmet());
 app.use(morgan("common"));
-
-app.use((req, res) => {
-  res.setHeader("Access-Control-Allow-Origin", "https://vibrant-murdock-08426b.netlify.app");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
-});
-
 
 let users = [];
 
