@@ -11,7 +11,9 @@ const morgan = require("morgan");
 const dotenv = require("dotenv");
 const cors = require("cors");
 const app = express();
-const io = require("socket.io")({
+const http = require("http");
+const server = http.createServer(app);
+const io = require("socket.io")(server, {
   cors: {
     origin: "https://vibrant-murdock-08426b.netlify.app/",
   },
@@ -79,6 +81,6 @@ io.on("connection", (socket) => {
   });
 });
 
-app.listen(process.env.PORT, () => {
+server.listen(process.env.PORT, () => {
   console.log(`server running on port 5000`);
 });

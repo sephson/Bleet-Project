@@ -10,12 +10,13 @@ import { io } from "socket.io-client";
 import { useParams } from "react-router";
 
 const IM = () => {
+  const ENDPOINT = "https://bleet-project.herokuapp.com/";
   const convo = useParams().conversationId;
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState([]);
   const [arrMessage, setArrMessage] = useState("");
   const { user } = useContext(AppContext);
-  const socket = useRef(io("https://bleet-project.herokuapp.com/"));
+  const socket = useRef(io(ENDPOINT));
   const scrollRef = useRef();
   const [conversations, setConversations] = useState([]);
   const [receiver, setReceiver] = useState({});
@@ -41,7 +42,7 @@ const IM = () => {
   }, [arrMessage, conversations]);
 
   useEffect(() => {
-    socket.current = io("https://bleet-project.herokuapp.com/");
+    socket.current = io(ENDPOINT);
     socket.current.on("getMessage", (data) => {
       setArrMessage({
         sender: data.senderId,
