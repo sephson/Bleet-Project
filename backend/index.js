@@ -32,6 +32,15 @@ app.use(express.json());
 app.use(helmet());
 app.use(morgan("common"));
 
+app.use((req, res) => {
+  res.setHeader("Access-Control-Allow-Origin", "https://vibrant-murdock-08426b.netlify.app");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+});
+
+
 let users = [];
 
 const addUser = (userId, socketId) => {
