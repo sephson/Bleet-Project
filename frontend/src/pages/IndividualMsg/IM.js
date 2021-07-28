@@ -42,7 +42,12 @@ const IM = () => {
   }, [arrMessage, conversations]);
 
   useEffect(() => {
-    socket.current = io(ENDPOINT);
+    socket.current = io(ENDPOINT, {
+      withCredentials: true,
+      extraHeaders: {
+        "my-custom-header": "abcd",
+      },
+    });
     socket.current.on("getMessage", (data) => {
       setArrMessage({
         sender: data.senderId,
