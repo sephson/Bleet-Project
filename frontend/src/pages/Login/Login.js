@@ -9,7 +9,7 @@ const Login = () => {
   const password = useRef();
   // const history = useHistory();
 
-  const { dispatch, user, error } = useContext(AppContext);
+  const { dispatch, error } = useContext(AppContext);
 
   const submitHandler = (e) => {
     e.preventDefault();
