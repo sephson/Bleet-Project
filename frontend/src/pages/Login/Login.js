@@ -9,7 +9,7 @@ const Login = () => {
   const password = useRef();
   // const history = useHistory();
 
-  const { dispatch, user } = useContext(AppContext);
+  const { dispatch, user, error } = useContext(AppContext);
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -18,7 +18,6 @@ const Login = () => {
       dispatch
     );
   };
-  console.log(user);
 
   return (
     <div>
@@ -59,6 +58,11 @@ const Login = () => {
                 </button>
               </Link>
             </form>
+            <div className="error">
+              {error
+                ? "We're sorry, you're using an invalid email or password"
+                : ""}
+            </div>
           </div>
         </div>
       </div>

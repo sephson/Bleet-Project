@@ -15,6 +15,7 @@ import DM from "../../components/DirectMessage/DM";
 const Profile = () => {
   const { user: currentUser, dispatch } = useContext(AppContext);
   const [user, setUser] = useState({});
+  const [load, setLoad] = useState({});
   const [followed, setFollowed] = useState(
     currentUser.following.includes(user._id)
   );
@@ -32,8 +33,9 @@ const Profile = () => {
 
   useEffect(() => {
     const fetchUsers = async () => {
-      const { data } = await axios.get(`/api/user?username=${username}`);
-      setUser(data);
+      const res = await axios.get(`/api/user?username=${username}`);
+      setUser(res.data);
+      setLoad(res.request);
     };
 
     fetchUsers();
@@ -80,12 +82,7 @@ const Profile = () => {
   };
 
   const dateJoined = new Date(user.createdAt);
-  console.log(currentUser);
-  console.log(user);
-  console.log(currentUser.following.includes(user._id));
-  console.log(followed);
-  console.log(currentUser.following);
-  console.log(user.followers);
+
   return (
     <div>
       <Navbar />
@@ -100,10 +97,15 @@ const Profile = () => {
                 <DM currentId={currentUser} />
               )}
             </div>
-            <h2 className="username">{user.username}</h2>
+            <h2 className="username">
+              {load.onload !== null ? "loading..." : user?.username}
+            </h2>
             <p className="bio">{user.bio}</p>
             <p className="bio">
-              Date Joined: {date.format(dateJoined, "ddd, MMM DD YYYY")}
+              Date Joined:
+              {load.onload !== null
+                ? "loading..."
+                : date.format(dateJoined, "ddd, MMM DD YYYY")}
             </p>
 
             {/* {console.log(user)}
