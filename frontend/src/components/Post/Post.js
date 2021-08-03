@@ -115,8 +115,8 @@ const Post = ({ post }) => {
               <ModeCommentIcon />
               <p className="commentIcon">
                 {comment.length > 1
-                  ? comment.length + " " + "Comments"
-                  : comment.length + " " + "Comment"}
+                  ? `${comment.length}Comments`
+                  : `${comment.length}Comment`}
               </p>
             </span>
           </Link>
