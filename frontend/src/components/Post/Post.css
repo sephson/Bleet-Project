@@ -8,6 +8,7 @@
   /* gap: 1.3rem; */
   margin-bottom: 1rem;
   grid-template-columns: 1fr 22fr 1fr;
+  align-items: center;
 }
 
 .postUser {
@@ -43,6 +44,10 @@
 .comments {
   justify-self: start;
   color: #08306b;
+  display: flex;
+  gap: 0.5rem;
+  display: flex;
+  gap: 0.5rem;
 }
 
 .like {
@@ -56,4 +61,8 @@
 
 .delete-pop {
   text-align: center;
+}
+
+.commentIcon {
+  font-weight: bold;
 }

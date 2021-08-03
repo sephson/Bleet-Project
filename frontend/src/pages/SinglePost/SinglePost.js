@@ -10,12 +10,14 @@ import { format } from "timeago.js";
 import "./SinglePost.css";
 import { Link } from "react-router-dom";
 import picture from "../../components/images/bleet.png";
+import Comment from "../../components/Comment/Comment";
 
 const SinglePost = () => {
   const { user: currentUser } = useContext(AppContext);
-  const pf = process.env.REACT_APP_PUBLIC_FOLDER;
   const [singlePost, setSinglePost] = useState({});
   const [user, setUser] = useState({});
+  const [comment, setComment] = useState("");
+  const [addedComment, setAddedComment] = useState("");
   const postId = useParams().postId;
 
   useEffect(() => {
@@ -34,8 +36,27 @@ const SinglePost = () => {
     fetchUser();
   }, [singlePost.userId]);
 
-  console.log(singlePost);
-  // console.log(user);
+  const handleChange = (e) => {
+    setComment(e.target.value);
+  };
+
+  const handleSubmit = async (e) => {
+    const postcomment = {
+      userId: currentUser._id,
+      username: currentUser.username,
+      content: comment,
+    };
+    try {
+      const { data } = await axios.post(
+        `/api/comment/${postId}/addcomment`,
+        postcomment
+      );
+
+      setAddedComment(data);
+      setComment("");
+    } catch (error) {}
+  };
+  console.log(addedComment);
   return (
     <div>
       <Navbar />
@@ -55,7 +76,7 @@ const SinglePost = () => {
           <p className="postContent">{singlePost.content}</p>
           <div className="postInteractions">
             <span className="comments">
-              <ModeCommentIcon /> {singlePost.comments?.length}
+              <ModeCommentIcon />
             </span>
             <span className="like">
               <FavoriteIcon /> {singlePost.likes?.length}
@@ -63,36 +84,24 @@ const SinglePost = () => {
           </div>
           <div className="comment-section">
             <form className="comment-form">
-              <img
-                className="shareProfileImg"
-                src={
-                  user.profilePicture
-                    ? pf + user.profilePicture
-                    : pf + "person/a.png"
-                }
-                alt=""
-              />
               <textarea
-                placeholder={`This feature is comming soon! ${currentUser.username}`}
+                placeholder={`post a comment! ${currentUser.username}`}
                 className="shareInput"
+                onChange={handleChange}
+                value={comment}
               />
-              <button type="submit" className="commentButton">
+              <button
+                onClick={handleSubmit}
+                type="submit"
+                className="commentButton"
+              >
                 Comment
               </button>
             </form>
           </div>
-          {/* <div className="comment-itself">
-            <main className="mainWrap">
-              <img className="postImg" src={postImg} alt="" />
-              <div className="userTimeWrap">
-                <h3 style={{ "font-size": "1.2rem" }} className="postUser">
-                  Disu
-                </h3>
-                <span className="postTime">5 min ago</span>
-              </div>
-            </main>
-            <p className="postcomment">This is great. Keep it up</p>
-          </div> */}
+          <div>
+            <Comment postId={postId} />
+          </div>
         </div>
       </div>
     </div>

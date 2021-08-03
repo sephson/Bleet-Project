@@ -6,6 +6,7 @@ const authRoute = require("./Routes/AuthRoute");
 const userRoute = require("./Routes/UserRoute");
 const postRoute = require("./Routes/PostRoute");
 const chatRoute = require("./Routes/ChatRoute");
+const commentRoute = require("./Routes/CommentRoute");
 const myConversationRoute = require("./Routes/MyConversationRoute");
 const morgan = require("morgan");
 const dotenv = require("dotenv");
@@ -58,6 +59,7 @@ app.use("/api/user", userRoute);
 app.use("/api/post", postRoute);
 app.use("/api/chat", chatRoute);
 app.use("/api/conversation", myConversationRoute);
+app.use("/api/comment", commentRoute);
 
 io.on("connection", (socket) => {
   console.log("A User Connected");

@@ -15,8 +15,17 @@ const Post = ({ post }) => {
   const [isLiked, setIsLiked] = useState(false);
   const [user, setUser] = useState({});
   const { user: currentUser } = useContext(AppContext);
-
   const [isOpen, setIsOpen] = useState(false);
+  const [comment, setComment] = useState([]);
+
+  useEffect(() => {
+    const getComment = async () => {
+      const { data } = await axios.get(`/api/comment/${post._id}/getcomment`);
+      setComment(data);
+    };
+
+    getComment();
+  }, [post._id]);
 
   const togglePopUp = () => {
     setIsOpen(!isOpen);
@@ -99,12 +108,21 @@ const Post = ({ post }) => {
         <Link to={`/single/${post._id}`}>
           <p className="postContent">{post.content}</p>
         </Link>
+
         <div className="postInteractions">
-          <span className="comments">
-            <ModeCommentIcon /> {post.comments.length}
-          </span>
+          <Link to={`/single/${post._id}`}>
+            <span className="comments">
+              <ModeCommentIcon />
+              <p className="commentIcon">
+                {comment.length > 1
+                  ? comment.length + " " + "Comments"
+                  : comment.length + " " + "Comment"}
+              </p>
+            </span>
+          </Link>
+
           <span onClick={likeHandler} className="like">
-            <FavoriteIcon /> {like}
+            <FavoriteIcon /> <p className="commentIcon">{like}</p>
           </span>
         </div>
       </div>
