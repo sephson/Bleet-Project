@@ -38,8 +38,21 @@ router.put("/:id/update", async (req, res) => {
   try {
     const user = Auth.findById(req.params.id);
     if (user) {
-      await user.updateOne({ $set: { bio: req.body.bio } });
-      res.status(200).json("Bio updated");
+      if (req.body.profilePicture && req.body.bio) {
+        await user.updateOne({
+          $set: { profilePicture: req.body.profilePicture, bio: req.body.bio },
+        });
+      } else if (req.body.profilePicture) {
+        await user.updateOne({
+          $set: { profilePicture: req.body.profilePicture },
+        });
+      } else if (req.body.bio) {
+        await user.updateOne({
+          $set: { bio: req.body.bio },
+        });
+      }
+
+      res.status(200).json("image updated");
     } else res.status(404).json("not found");
   } catch (err) {
     return res.status(500).json(err);

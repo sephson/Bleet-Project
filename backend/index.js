@@ -8,6 +8,7 @@ const postRoute = require("./Routes/PostRoute");
 const chatRoute = require("./Routes/ChatRoute");
 const commentRoute = require("./Routes/CommentRoute");
 const myConversationRoute = require("./Routes/MyConversationRoute");
+const uploadRoute = require("./Routes/UploadRoute");
 const morgan = require("morgan");
 const dotenv = require("dotenv");
 const app = express();
@@ -60,6 +61,9 @@ app.use("/api/post", postRoute);
 app.use("/api/chat", chatRoute);
 app.use("/api/conversation", myConversationRoute);
 app.use("/api/comment", commentRoute);
+app.use("/api/upload", uploadRoute);
+
+app.use("/uploads", express.static(path.join(__dirname, "/uploads")));
 
 io.on("connection", (socket) => {
   console.log("A User Connected");

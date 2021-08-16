@@ -19,17 +19,37 @@ const Profile = () => {
   const [followed, setFollowed] = useState(
     currentUser.following.includes(user._id)
   );
+  //for imagee upload
+  const [image, setImage] = useState();
+  const [preview, setPreview] = useState();
+  const [view, setView] = useState();
+  const fileInputRef = useRef();
 
   const username = useParams().username;
   const [isOpen, setIsOpen] = useState(false);
   const togglePopup = () => {
     setIsOpen(!isOpen);
   };
-  console.log(currentUser);
-  console.log(user);
+  // console.log(currentUser);
+  // console.log(user);
   const bio = useRef();
 
   // const [currentChat, setCurrentChat] = useState(null);
+
+  const addPhotoHandler = (e) => {
+    e.preventDefault();
+    fileInputRef.current.click();
+  };
+  useEffect(() => {
+    if (view) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setPreview(reader.result);
+      };
+
+      reader.readAsDataURL(view);
+    } else setPreview(null);
+  }, [view]);
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -40,8 +60,8 @@ const Profile = () => {
 
     fetchUsers();
   }, [username]);
-  console.log(user);
-  console.log(currentUser._id);
+  // console.log(user);
+  // console.log(currentUser._id);
 
   useEffect(() => {
     setFollowed(currentUser.following.includes(user._id));
@@ -73,15 +93,38 @@ const Profile = () => {
     setFollowed(followed);
   };
 
+  const dateJoined = new Date(user.createdAt);
+
   const updateHandler = async () => {
     try {
       await axios.put(`/api/user/${user._id}/update`, {
+        profilePicture: image,
         bio: bio.current.value,
       });
     } catch (err) {}
   };
 
-  const dateJoined = new Date(user.createdAt);
+  const imageInputHandler = async (e) => {
+    const file = e.target.files[0];
+    file ? setImage(file) : setImage(null);
+    file ? setView(file) : setView(null);
+
+    const formData = new FormData();
+    formData.append("image", file);
+
+    try {
+      const config = {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      };
+
+      const { data } = await axios.put("/api/upload", formData, config);
+      setImage(data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <div>
@@ -91,7 +134,11 @@ const Profile = () => {
         <div>
           <div className="profile">
             <div className="msg-wrap">
-              <img className="postImg" src={picture} alt="" />
+              <img
+                className="postImg"
+                src={user.profilePicture ? user.profilePicture : picture}
+                alt=""
+              />
               {/* {console.log(username)} */}
               {currentUser.username === username || (
                 <DM currentId={currentUser} />
@@ -135,6 +182,32 @@ const Profile = () => {
             <PopUp
               content={
                 <form onSubmit={updateHandler}>
+                  <input
+                    style={{ display: "none" }}
+                    type="file"
+                    classname="img"
+                    name="img"
+                    accept="image/*"
+                    ref={fileInputRef}
+                    onChange={imageInputHandler}
+                  />
+                  <div className="image-prev">
+                    {preview ? (
+                      <img
+                        src={preview}
+                        alt="imag-prev"
+                        className="preview-image"
+                        onClick={() => setImage(null)}
+                      />
+                    ) : (
+                      <button
+                        onClick={addPhotoHandler}
+                        className="commentButton"
+                      >
+                        Upload Image
+                      </button>
+                    )}
+                  </div>
                   <textarea
                     maxLength={50}
                     className="shareInput"
