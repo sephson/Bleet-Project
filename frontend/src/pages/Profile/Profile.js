@@ -126,6 +126,9 @@ const Profile = () => {
     }
   };
 
+  console.log(image);
+  console.log(user.profilePicture);
+
   return (
     <div>
       <Navbar />
