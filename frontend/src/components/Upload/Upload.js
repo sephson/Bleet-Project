@@ -75,6 +75,7 @@ const profileUpdate = async() => {
 console.log(e)
       }
 }
+console.log(url)
 console.log(url?.uploadResponse?.url)
 
   return (
