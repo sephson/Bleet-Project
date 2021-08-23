@@ -63,7 +63,7 @@ app.use("/api/conversation", myConversationRoute);
 app.use("/api/comment", commentRoute);
 app.use("/api/upload", uploadRoute);
 
-app.use("/uploads", express.static(path.join(__dirname, "/uploads")));
+// app.use("/uploads", express.static(path.join(__dirname, "/uploads")));
 
 io.on("connection", (socket) => {
   console.log("A User Connected");

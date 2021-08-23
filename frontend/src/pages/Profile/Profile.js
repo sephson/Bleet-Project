@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext, useRef } from "react";
+import React, { useState, useEffect, useContext} from "react";
 import Leftbar from "../../components/Leftbar/Leftbar";
 import Navbar from "../../components/Navbar/Navbar";
 import date from "date-and-time";
@@ -11,6 +11,7 @@ import { useParams } from "react-router";
 import { AppContext } from "../../context/AppContext";
 import { Follow, Unfollow } from "../../context/AppActions";
 import DM from "../../components/DirectMessage/DM";
+import Upload from "../../components/Upload/Upload";
 
 const Profile = () => {
   const { user: currentUser, dispatch } = useContext(AppContext);
@@ -20,10 +21,10 @@ const Profile = () => {
     currentUser.following.includes(user._id)
   );
   //for imagee upload
-  const [image, setImage] = useState();
-  const [preview, setPreview] = useState();
-  const [view, setView] = useState();
-  const fileInputRef = useRef();
+  // const [image, setImage] = useState();
+  // const [preview, setPreview] = useState();
+  // const [view, setView] = useState();
+  // const fileInputRef = useRef();
 
   const username = useParams().username;
   const [isOpen, setIsOpen] = useState(false);
@@ -32,24 +33,24 @@ const Profile = () => {
   };
   // console.log(currentUser);
   // console.log(user);
-  const bio = useRef();
+  // const bio = useRef();
 
   // const [currentChat, setCurrentChat] = useState(null);
 
-  const addPhotoHandler = (e) => {
-    e.preventDefault();
-    fileInputRef.current.click();
-  };
-  useEffect(() => {
-    if (view) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setPreview(reader.result);
-      };
+  // const addPhotoHandler = (e) => {
+  //   e.preventDefault();
+  //   fileInputRef.current.click();
+  // };
+  // useEffect(() => {
+  //   if (view) {
+  //     const reader = new FileReader();
+  //     reader.onloadend = () => {
+  //       setPreview(reader.result);
+  //     };
 
-      reader.readAsDataURL(view);
-    } else setPreview(null);
-  }, [view]);
+  //     reader.readAsDataURL(view);
+  //   } else setPreview(null);
+  // }, [view]);
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -95,38 +96,38 @@ const Profile = () => {
 
   const dateJoined = new Date(user.createdAt);
 
-  const updateHandler = async () => {
-    try {
-      await axios.put(`/api/user/${user._id}/update`, {
-        profilePicture: image,
-        bio: bio.current.value,
-      });
-    } catch (err) {}
-  };
+  // const updateHandler = async () => {
+  //   try {
+  //     await axios.put(`/api/user/${user._id}/update`, {
+  //       profilePicture: image,
+  //       bio: bio.current.value,
+  //     });
+  //   } catch (err) {}
+  // };
 
-  const imageInputHandler = async (e) => {
-    const file = e.target.files[0];
-    file ? setImage(file) : setImage(null);
-    file ? setView(file) : setView(null);
+  // const imageInputHandler = async (e) => {
+  //   const file = e.target.files[0];
+  //   file ? setImage(file) : setImage(null);
+  //   file ? setView(file) : setView(null);
 
-    const formData = new FormData();
-    formData.append("image", file);
+  //   const formData = new FormData();
+  //   formData.append("image", file);
 
-    try {
-      const config = {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      };
+  //   try {
+  //     const config = {
+  //       headers: {
+  //         "Content-Type": "multipart/form-data",
+  //       },
+  //     };
 
-      const { data } = await axios.put("/api/upload", formData, config);
-      setImage(data);
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  //     const { data } = await axios.put("/api/upload", formData, config);
+  //     setImage(data);
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
 
-  console.log(image);
+  // console.log(image);
   console.log(user.profilePicture);
 
   return (
@@ -184,50 +185,52 @@ const Profile = () => {
           {isOpen && (
             <PopUp
               content={
-                <form onSubmit={updateHandler}>
-                  <input
-                    style={{ display: "none" }}
-                    type="file"
-                    classname="img"
-                    name="img"
-                    accept="image/*"
-                    ref={fileInputRef}
-                    onChange={imageInputHandler}
-                  />
-                  <div className="image-prev">
-                    {preview ? (
-                      <img
-                        src={preview}
-                        alt="imag-prev"
-                        className="preview-image"
-                        onClick={() => setImage(null)}
-                      />
-                    ) : (
-                      <button
-                        onClick={addPhotoHandler}
-                        className="commentButton"
-                      >
-                        Upload Image
-                      </button>
-                    )}
-                  </div>
-                  <textarea
-                    maxLength={50}
-                    className="shareInput"
-                    type="text"
-                    placeholder="Update bio"
-                    ref={bio}
-                  />
-                  <button
-                    style={{ "background-color": "rgb(182, 0, 0)" }}
-                    className="commentButton"
-                    type="submit"
-                    // onClick={refresHandler}
-                  >
-                    Update Profile
-                  </button>
-                </form>
+                // <form onSubmit={updateHandler}>
+                //   <input
+                //     style={{ display: "none" }}
+                //     type="file"
+                //     classname="img"
+                //     name="img"
+                //     accept="image/*"
+                //     ref={fileInputRef}
+                //     onChange={imageInputHandler}
+                //   />
+                //   <div className="image-prev">
+                //     {preview ? (
+                //       <img
+                //         src={preview}
+                //         alt="imag-prev"
+                //         className="preview-image"
+                //         onClick={() => setImage(null)}
+                //       />
+                //     ) : (
+                //       <button
+                //         onClick={addPhotoHandler}
+                //         className="commentButton"
+                //       >
+                //         Upload Image
+                //       </button>
+                //     )}
+                //   </div>
+                //   <textarea
+                //     maxLength={50}
+                //     className="shareInput"
+                //     type="text"
+                //     placeholder="Update bio"
+                //     ref={bio}
+                //   />
+                //   <button
+                //     style={{ "background-color": "rgb(182, 0, 0)" }}
+                //     className="commentButton"
+                //     type="submit"
+                //     // onClick={refresHandler}
+                //   >
+                //     Update Profile
+                //   </button>
+                // </form>
+                 <Upload userId={user._id} />
               }
+                      
               handleClose={togglePopup}
             />
           )}
