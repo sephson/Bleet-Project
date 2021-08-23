@@ -76,8 +76,7 @@ console.log(e)
       }
 }
 console.log(url?.uploadResponse?.url)
-console.log(setFileInputState)
-console.log()
+
   return (
     <div>
      <form onSubmit={handleSubmitFile}>
