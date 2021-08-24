@@ -1,8 +1,10 @@
-const express = require("express")
+const express = require("express");
 const router = express.Router();
 const path = require("path");
+const  cloudinary  = require("../utils/cloudinary");
 
-const { cloudinary } = require("../utils/cloudinary");
+
+
 // const multer = require("multer");
 
 // const storage = multer.diskStorage({
@@ -38,7 +40,7 @@ const { cloudinary } = require("../utils/cloudinary");
 // });
 
 
-router.put("/api/upload", async (req, res) => {
+router.put("/", async (req, res) => {
   try {
     const fileStr = req.body.data;
 
@@ -47,6 +49,7 @@ router.put("/api/upload", async (req, res) => {
     });
     console.log(uploadResponse);
     res.status(200).json({ success: true, uploadResponse });
+    console.log(fileStr)
    
   } catch (err) {
     console.error(err);
