@@ -55,7 +55,8 @@ const uploadImage = async (base64EncodedImage) => {
         setUrl(data)
 
 
-     
+            setFileInputState('');
+            setPreviewSource('');
   
 
   }
@@ -78,6 +79,9 @@ console.log(e)
 console.log(`response: ${url}`)
 console.log(`url: ${url?.uploadResponse?.url}`)
 console.log(`bio: ${bio}`)
+console.log(fileInputState)
+console.log(previewSource)
+console.log(selectedFile)
 
   return (
     <div>
